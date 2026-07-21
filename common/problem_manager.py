@@ -7,7 +7,7 @@ def settings_reader():
     settings_file = open(r"./settings.set")
 
     # LIST THE AVAILABLE SOLVERS AND INITIALIZE default_mode TO False
-    SOLVERS = {"Cadical300", "Glucose421", "cryptominisat5", "Kissat404", "minisat22", "minicard", "lingeling", "maplechrono", "mergesat30"}
+    SOLVERS = {"Cadical300", "Glucose421", "cryptominisat5", "Kissat404", "minisat22", "minicard"}
     default_mode = False
 
     # LOOK FOR THE DEFAULT MODE SETTING

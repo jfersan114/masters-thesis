@@ -21,6 +21,7 @@ def read_word_set(is_accepting: bool):
         for i in range(len(S[k])):
             assert S[k][i] == -1 or S[k][i] == 0 or S[k][i] == 1, f"Word {k} of block A has a non-ternary character in position {i}." if is_accepting else f"Word {k} of block R has a non-ternary character in position {i}."
     return S
+
 def read_automaton(n: int):
     DELTA, FINAL = [ [0]*n for _ in range(-1,2) ], [0]*n
     for i in range(n):
