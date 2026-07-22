@@ -53,7 +53,8 @@ def settings_reader():
         u = v = 0.02
         solver_to_use = "Cadical300"
 
-    # IF u,v ARE NOT FIXED, SET THEIR VALUES TO None AND LOOK FOR THE % OF VALUES THAT SHOULD BE TRAVERSED
+    # IF u,v ARE NOT FIXED, SET THEIR VALUES TO None AND LOOK FOR THE % OF VALUES THAT SHOULD BE TRAVERSED.
+    # IF THEY ARE, SET p_diags TO None
     if not default_mode and not are_u_v_fixed:
         u = v = None
         settings_file = open(r"./settings.set")
@@ -62,6 +63,8 @@ def settings_reader():
                 p_diags = float( line.split()[-1] )
                 if p_diags < 0 or p_diags > 100:
                     raise ValueError("We need 0 <= p_diags <= 100.")
+    elif not default_mode and are_u_v_fixed:
+        p_diags = None
 
     
     # LOOK FOR u,v IF NEEDED.
@@ -120,7 +123,7 @@ def input_reader():
 
     # IF u,v ARE NOT FIXED, COMPUTE THE # OF DIAGONALS TO CHECK
     if not are_u_v_fixed:
-        n_diags = (len(U) + len(V) - 1)*p_diags/100
+        n_diags = int( (len(U) + len(V) - 1)*p_diags/100 )
     else:
         n_diags = len(U) + len(V) - 1
 

@@ -3,8 +3,8 @@ n:              5
 length:         7
 M_type:         f
 M:              20
-Are u,v fixed:  1
-% of diagonals: 20
+Are u,v fixed:  0
+% of diagonals: 10
 u:              0.02
 v:              0.02
 Solver to use:  Cadical300
