@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+debug
+out
+old
+quality
+testing
+register
+.vscode
+anotaciones.xd
