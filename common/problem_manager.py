@@ -133,7 +133,7 @@ def input_reader():
     return instance, date_instance, stock_values, n, length, words_file, M, U, V, MGL, LGL, solver_to_use, n_diags
 
 
-def solution_plotter(A: list, R: list, n: int, DELTAn1: list, DELTA0: list, DELTA1: list, ALPHA: list, best_u: float, best_v: float,
+def solution_plotter(A: list, R: list, n: int, DELTAn1: list, DELTA0: list, DELTA1: list, ALPHA: list, best_u: float, best_v: float, best_i_u: int, best_i_v: int,
                      best_guessing_index: int, M: int, solver_to_use: str, TIME_SPENT: float, problem_file, solution_file, automaton_file: str ="automaton_graph"):
     
     # to solution_file
@@ -147,7 +147,8 @@ def solution_plotter(A: list, R: list, n: int, DELTAn1: list, DELTA0: list, DELT
     # to stdout
     print( "------------------------------------------------------------------------")
     print(f"BEST SOLUTION FOUND:")
-    print(f"(u,v) = ({best_u},{best_v}):")
+    print(f"(u,v) = ({best_u},{best_v})")
+    print(f"(i,j) = ({best_i_u},{best_i_v})")
     print(f"With best guessing rate: {best_guessing_index} / {M+M}")
     print("AUTOMATON:")
     cf.print_solution(n,DELTAn1,DELTA0,DELTA1,ALPHA,None)
@@ -158,7 +159,8 @@ def solution_plotter(A: list, R: list, n: int, DELTAn1: list, DELTA0: list, DELT
     # to problem_file
     print( "------------------------------------------------------------------------", file=problem_file)
     print(f"BEST SOLUTION FOUND:",file=problem_file)
-    print(f"(u,v) = ({best_u},{best_v}):",file=problem_file)
+    print(f"(u,v) = ({best_u},{best_v})",file=problem_file)
+    print(f"(i,j) = ({best_i_u},{best_i_v})",file=problem_file)
     print(f"With best guessing rate: {best_guessing_index} / {M+M}",file=problem_file)
     print("AUTOMATON:",file=problem_file)
     cf.print_solution(n,DELTAn1,DELTA0,DELTA1,ALPHA,problem_file)

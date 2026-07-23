@@ -54,8 +54,9 @@ best_guessing_rate = M - 1
 optimals_thresholds = []
 for d in range(n_diags):
     for i_u in range(max(0,d-len(V)+1),min(len(U)-1, d) + 1):
+        i_v = d - i_u
         u = U[i_u]
-        v = V[d - i_u]
+        v = V[i_v]
         t0 = time.time()
         print(f"------------------------------------------------------------------------\nSolving for values (u,v)= ({u},{v}).")
 
@@ -277,6 +278,8 @@ for d in range(n_diags):
             best_A = copy.deepcopy(A)
             best_R = copy.deepcopy(R)
             BEST_SOL = SOL.copy()
+            best_i_u = i_u
+            best_i_v = i_v
 
         if best_guessing_rate >= M+M:
             break
@@ -293,7 +296,7 @@ TIME_SPENT = END - START
 solution_file = open(r"./out/" + date_instance + ".sol","w")
 (DELTAn1, DELTA0, DELTA1, FINAL) = cf.read_solution(BEST_SOL,n,I_final,I_tree)
 
-pm.solution_plotter(best_A, best_R, n, DELTAn1, DELTA0, DELTA1, FINAL, best_u, best_v, best_guessing_rate,
+pm.solution_plotter(best_A, best_R, n, DELTAn1, DELTA0, DELTA1, FINAL, best_u, best_v, best_i_u, best_i_v, best_guessing_rate,
                     M, solver_to_use, TIME_SPENT, problem_file, solution_file, instance)
 
 # CLOSE ALL FILES
@@ -302,3 +305,10 @@ problem_file.close()
 words_file.close()
 solution_file.close()
 clauses_file.close()
+
+# 
+# 
+# 
+# 
+# 
+# 

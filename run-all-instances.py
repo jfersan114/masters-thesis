@@ -19,7 +19,7 @@ u_v_list = []
 
 if not os.path.exists("./register/results.csv"):
     f = open(r"./register/results.csv", "w")
-    print("Instance         |   Quality  |         Time       |                  (u,v)\n-------------------------------------------------------------------------------------------------", file=f)
+    print("Instance         |   Quality  |         Time       |                  (u,v)                          |           (i,j)\n---------------------------------------------------------------------------------------------------------------------------------", file=f)
     f.close()
 
 with open(r"./register/results.csv") as f:
@@ -33,7 +33,7 @@ count = 0
 
 for filename in os.listdir(INSTANCES):
 
-    if filename.endswith(".std") and filename not in DONE and count < 10:
+    if filename.endswith(".std") and filename not in DONE and count < 4:
 
         instance = filename[:-4]
 
@@ -45,7 +45,7 @@ for filename in os.listdir(INSTANCES):
                 input=instance,
                 capture_output=True,
                 text=True,
-                timeout=1000
+                timeout=1800
             )
 
             if result.returncode != 0:
@@ -64,6 +64,7 @@ for filename in os.listdir(INSTANCES):
         time_value = None
         quality_value = None
         u_v_pair = None
+        i_j_pair = None
 
         for line in result.stdout.splitlines():
 
@@ -74,10 +75,13 @@ for filename in os.listdir(INSTANCES):
                 quality_value = line.split(":")[-1]
             
             if line.startswith("(u,v) = "):
-                u_v_pair = ast.literal_eval(line[len("(u,v) = "):].rstrip(":"))
+                u_v_pair = ast.literal_eval(line[len("(u,v) = "):])
                 u_v_list.append(u_v_pair)
 
-        results.append( [ instance, quality_value, time_value, u_v_pair ] )
+            if line.startswith("(i,j) = "):
+                i_j_pair = ast.literal_eval(line[len("(i,j) = "):])
+
+        results.append( [ instance, quality_value, time_value, u_v_pair, i_j_pair ] )
     
         count += 1
 
@@ -87,7 +91,7 @@ with open("./register/results.csv", "a") as f:
         tabs = ""
         for i in range(5 - (len(line[0])//4)):
             tabs += "\t"
-        print(f"{line[0]}" + tabs + f"{line[1]}" + f"{line[2]}" + f"\t {line[3]}", file= f)
+        print(f"{line[0]}" + tabs + f"{line[1]}" + f"{line[2]}" + f"\t {line[3]}" + f"\t\t\t{line[4]}", file= f)
     
     for instance in timeouts:
         print(instance + "\t\t\t\t\t\t\tTIMED OUT")

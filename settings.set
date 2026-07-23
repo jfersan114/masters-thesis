@@ -4,7 +4,7 @@ length:         7
 M_type:         f
 M:              20
 Are u,v fixed:  0
-% of diagonals: 100
+% of diagonals: 8
 u:              0.015
 v:              0.015
 Solver to use:  Cadical300
