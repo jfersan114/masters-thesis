@@ -33,7 +33,7 @@ count = 0
 
 for filename in os.listdir(INSTANCES):
 
-    if filename.endswith(".std") and filename not in DONE and count < 1:
+    if filename.endswith(".std") and filename not in DONE and count < 10:
 
         instance = filename[:-4]
 
