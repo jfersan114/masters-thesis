@@ -51,6 +51,7 @@ START = time.time()
 
 problem_file = open(r"./register/" + date_instance + ".reg","w")
 best_guessing_rate = M - 1
+optimals_thresholds = []
 for d in range(n_diags):
     for i_u in range(max(0,d-len(V)+1),min(len(U)-1, d) + 1):
         u = U[i_u]
@@ -295,19 +296,9 @@ solution_file = open(r"./out/" + date_instance + ".sol","w")
 pm.solution_plotter(best_A, best_R, n, DELTAn1, DELTA0, DELTA1, FINAL, best_u, best_v, best_guessing_rate,
                     M, solver_to_use, TIME_SPENT, problem_file, solution_file, instance)
 
-
 # CLOSE ALL FILES
 
 problem_file.close()
 words_file.close()
 solution_file.close()
 clauses_file.close()
-
-
-# ✓ 1. PBlib
-# ✓  - Juntar palabras
-# ✗  - Implementar pseudobool (with incremental interface)
-#   2. Més exemples (kissat vs Cadical vs los demás)
-# ✓ 3. Unificar todos los programas y modularizar el código
-# ✗ 4. Implementar checker
-# ✓ 5. Mostrar autómata gráficamente
