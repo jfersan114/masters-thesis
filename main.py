@@ -19,8 +19,7 @@ register_dir.mkdir(exist_ok=True)
 
 # ASK THE USER THE PARAMETERS OF THE PROBLEM AN STORE THEM
 
-(instance, date_instance, stock_values, n, length, words_file,
-        M, U, V, MGL, LGL, solver_to_use, n_diags) = pm.input_reader()
+(instance, date_instance, stock_values, n, length, words_file, M, U, V, MGL, LGL, solver_to_use, n_diags) = pm.input_reader()
 I_final = 3*n*n
 I_tree = I_final + n
 
@@ -51,7 +50,8 @@ START = time.time()
 
 problem_file = open(r"./register/" + date_instance + ".reg","w")
 best_guessing_rate = M - 1
-optimals_thresholds = []
+optimal_thresholds = []
+
 for d in range(n_diags):
     for i_u in range(max(0,d-len(V)+1),min(len(U)-1, d) + 1):
         i_v = d - i_u
@@ -126,7 +126,7 @@ for d in range(n_diags):
         print("Variables for delta:", file=clauses_file)
         for i in range(n):
             print( [ [ delta(a,i,j) for j in range(n) ] for a in range(-1,2) ], file=clauses_file)
-        print("Variables for final:", file=clauses_file)
+        print("variables for final states:", file=clauses_file)
         print( [ final(i) for i in range(n) ], file=clauses_file)
         print(f"-------- # of variables used up to this point: {I_tree} --------", file= clauses_file)
         print("Variables for the tree nodes:", file=clauses_file)
@@ -148,7 +148,7 @@ for d in range(n_diags):
         pool = IDPool(start_from=n_vars+1)
 
         def add_traversing_constraints(T: cf.TernaryTree, node: cf.TernaryNode):
-            clauses = CardEnc.equals( lits=[ node_index(node,j) for j in range(n) ], vpool=pool, bound=1 ).clauses
+            clauses = CardEnc.equals( lits=[ node_index(node,j) for j in range(n) ], vpool=pool, bound=1, encoding=1 ).clauses
             print(f"Clauses for EaU of the {node.ordinal}{cf.ordinal_suffix(node.ordinal)} node of T:\n",clauses, file=clauses_file)
             problem.extend( clauses )
             for a in range(-1,2):
@@ -165,7 +165,7 @@ for d in range(n_diags):
 
         for a in range(-1,2):
             for i in range(n):
-                clauses = CardEnc.equals( lits=[ delta(a,i,j) for j in range(n) ], vpool=pool, bound=1 ).clauses
+                clauses = CardEnc.equals( lits=[ delta(a,i,j) for j in range(n) ], vpool=pool, bound=1, encoding=1 ).clauses
                 print(f"Clauses for EaU of delta({a},{i},·):\n", clauses, file=clauses_file)
                 problem.extend( clauses )
 
@@ -192,7 +192,7 @@ for d in range(n_diags):
             print(f"Definition of correctly_rejected({k}):",clauses, file=clauses_file)
             problem.extend( clauses )
 
-        # ADD REDUNDANT CLAUSES TO HELP THE SOLVER PROPAGATE
+        """# ADD REDUNDANT CLAUSES TO HELP THE SOLVER PROPAGATE
 
         for k in range(M_A):
             for l in range(k+1,M_A):
@@ -213,7 +213,7 @@ for d in range(n_diags):
                     for i in range(n):
                         clauses = [ [ -R_guessing_state(k,i) , R_guessing_state(l,i) ] , [ R_guessing_state(k,i) , -R_guessing_state(l,i) ] ]
                         print(f"Redundant equivalence between R_guessing_states({k},{i}) and R_guessing_states({l},{i}):",clauses, file=clauses_file)
-                        problem.extend( clauses )
+                        problem.extend( clauses )"""
 
         # TRY TO SOLVE THE PROBLEM AND PRINT THE RESULTING GUESSING INDEX
 
@@ -224,7 +224,7 @@ for d in range(n_diags):
         t = ITotalizer( lits=unguessing_lits, ubound=(M+M), top_id=problem.atoms()[-1] )
         problem.extend( t.cnf.clauses )
         problem.append( [-t.rhs[-guessing_rate]] )
-        attempts_count= 0
+        attempts_count = 0
         if solver_to_use != "Kissat404": s = Solver(name= "cadical300", bootstrap_with=problem.clauses)
         while still_solvable and attempts_count < M + 1:
             if solver_to_use == "Kissat404": s = Solver(name= "Kissat404", bootstrap_with=problem.clauses)
@@ -278,14 +278,14 @@ for d in range(n_diags):
             best_A = copy.deepcopy(A)
             best_R = copy.deepcopy(R)
             BEST_SOL = SOL.copy()
-            best_i_u = i_u
-            best_i_v = i_v
 
         if best_guessing_rate >= M+M:
             break
 
     if best_guessing_rate >= M+M:
             break
+
+optimal_thresholds = [(best_u,best_v)]
 
 
 # SHOW THE RESULTS OBTAINED THROUGH EACH OUTPUT
@@ -296,8 +296,8 @@ TIME_SPENT = END - START
 solution_file = open(r"./out/" + date_instance + ".sol","w")
 (DELTAn1, DELTA0, DELTA1, FINAL) = cf.read_solution(BEST_SOL,n,I_final,I_tree)
 
-pm.solution_plotter(best_A, best_R, n, DELTAn1, DELTA0, DELTA1, FINAL, best_u, best_v, best_i_u, best_i_v, best_guessing_rate,
-                    M, solver_to_use, TIME_SPENT, problem_file, solution_file, instance)
+pm.solution_plotter(stock_values, best_A, best_R, n, DELTAn1, DELTA0, DELTA1, FINAL, best_u, best_v, optimal_thresholds, best_guessing_rate, M, solver_to_use, TIME_SPENT, problem_file, solution_file, automaton_file=instance)
+
 
 # CLOSE ALL FILES
 
@@ -305,10 +305,3 @@ problem_file.close()
 words_file.close()
 solution_file.close()
 clauses_file.close()
-
-# 
-# 
-# 
-# 
-# 
-# 

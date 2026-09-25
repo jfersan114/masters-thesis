@@ -1,4 +1,5 @@
 from . import common_functions as cf
+from . import automaton_quality as aq
 from datetime import datetime, timezone
 
 def settings_reader():
@@ -133,40 +134,103 @@ def input_reader():
     return instance, date_instance, stock_values, n, length, words_file, M, U, V, MGL, LGL, solver_to_use, n_diags
 
 
-def solution_plotter(A: list, R: list, n: int, DELTAn1: list, DELTA0: list, DELTA1: list, ALPHA: list, best_u: float, best_v: float, best_i_u: int, best_i_v: int,
-                     best_guessing_index: int, M: int, solver_to_use: str, TIME_SPENT: float, problem_file, solution_file, automaton_file: str ="automaton_graph"):
-    
+def cut_input_reader():
+
+    # READ THE SETTINGS FILE SPECIFIED BY THE USER
+    (default_mode, n, length, M_type, M, are_u_v_fixed, p_diags, u, v, solver_to_use) = settings_reader()
+
+    # OPEN THE FILE CONTAINING THE VALUES OF THE STOCK AND STORE THEM
+    instance = input("Input file? (from \'instances\' folder) ")
+    input_file = open(r"./instances/" + instance + ".std")
+    stock_values = cf.read_stock(input_file)
+    input_file.close()
+
+    # CUT THE STOCK HISTORY INTO TWO PIECES
+    training_data = stock_values[:-365]
+
+    # COMPUTE THE TOTAL AMOUNT OF EXISTING SUBWORDS OF THE STOCK
+    words_file = open(r"./debug/words_file.txt","w")
+    N_subwords = cf.subwords_lister(training_data,length,words_file)
+    print(f"Total # of subwords: {N_subwords}", file=words_file)
+
+    # INTERPRET M AS A PERCENTAGE
+    if M_type == "p":
+        M = N_subwords*M//200
+
+    # CHECK THAT M IS VALID AND RECTIFY IF IN DEBUG MODE
+    if M+M > N_subwords and not default_mode:
+        raise ValueError("The amount of words to analyze exceeds the total amount of subwords of the list of values of the stock.")
+    elif M+M > N_subwords and default_mode:
+        M = N_subwords//2
+
+    # BUILD THE LISTS OF MOST AND LEAST GROWING WORDS AND FIND THE MEANINGFUL COEFICIENTS
+    (MGL, LGL, coeficients) = cf.most_meaningful_words(M,training_data,length)
+    cf.print_list_of_subwords(MGL,words_file,True)
+    cf.print_list_of_subwords(LGL,words_file,False)
+
+    # ASK IF u,v WILL HAVE A FIXED VALUE AND BUILD U,V ACCORDINGLY
+    (U,V) = cf.region_representatives(coeficients)
+    if are_u_v_fixed:
+        (U,V) = ([u],[v])
+
+    # IF u,v ARE NOT FIXED, COMPUTE THE # OF DIAGONALS TO CHECK
+    if not are_u_v_fixed:
+        n_diags = int( (len(U) + len(V) - 1)*p_diags/100 )
+    else:
+        n_diags = len(U) + len(V) - 1
+
+    # GIVE NAME TO THE REG FILE
+    date_instance = instance + " " + solver_to_use + " " + str(datetime.now(timezone.utc))[:19]
+
+    return instance, date_instance, stock_values, n, length, words_file, M, U, V, MGL, LGL, solver_to_use, n_diags
+
+
+def solution_plotter(stock_values: list, A: list, R: list, n: int, DELTAn1: list, DELTA0: list, DELTA1: list, ALPHA: list, best_u: float, best_v: float, optimal_thresholds: list, best_guessing_index: int, M: int, solver_to_use: str, TIME_SPENT: float, problem_file, solution_file, automaton_file: str ="automaton_graph", cut: bool=False):
+
+    if cut:
+        (positives_guessed, negatives_tanked) = aq.run_atomata_on_stock(DELTAn1, DELTA0, DELTA1, ALPHA, stock_values, best_u, best_v)
+        total_guesses = positives_guessed + negatives_tanked
+
     # to solution_file
     cf.print_word_set(A,True,True,solution_file)
     cf.print_word_set(R,False,True,solution_file)
     print(n,file=solution_file)
     cf.print_solution(n,DELTAn1,DELTA0,DELTA1,ALPHA,solution_file)
     print(best_guessing_index,file=solution_file)
-    print(TIME_SPENT,file=solution_file)
+    print(best_u,best_v,file=solution_file)
 
     # to stdout
     print( "------------------------------------------------------------------------")
     print(f"BEST SOLUTION FOUND:")
     print(f"(u,v) = ({best_u},{best_v})")
-    print(f"(i,j) = ({best_i_u},{best_i_v})")
-    print(f"With best guessing rate: {best_guessing_index} / {M+M}")
+    print("Optimal (u,v) list: \t[ ", end="")
+    for (u_, v_) in optimal_thresholds:
+        print(f"({round(u_,4)},{round(v_,4)}) ", end="")
+    print("]")
+    print(f"With best guessing_rate: {best_guessing_index} / {M+M}")
     print("AUTOMATON:")
     cf.print_solution(n,DELTAn1,DELTA0,DELTA1,ALPHA,None)
-    print( "------------------------------------------------------------------------")
-    print( "Total time spent solving the problem:\t",TIME_SPENT)
-    print( "Solver used:                         \t",solver_to_use,"w/o PBlib")
+    print(f"Obtained quality of the automaton:  \t" + f"{positives_guessed} / {total_guesses} = {round(100*positives_guessed/total_guesses, 2)}%" if cut else "<None>")
+    print("------------------------------------------------------------------------")
+    print("Total time spent solving the problem:\t",TIME_SPENT)
+    print("Solver used:                         \t",solver_to_use,"w/o PBlib")
 
     # to problem_file
     print( "------------------------------------------------------------------------", file=problem_file)
     print(f"BEST SOLUTION FOUND:",file=problem_file)
     print(f"(u,v) = ({best_u},{best_v})",file=problem_file)
-    print(f"(i,j) = ({best_i_u},{best_i_v})",file=problem_file)
-    print(f"With best guessing rate: {best_guessing_index} / {M+M}",file=problem_file)
+    print("Optimal (u,v) list: \t[ ", end="", file=problem_file)
+    for (u_, v_) in optimal_thresholds:
+        print(f"({round(u_,4)},{round(v_,4)}) ", end="", file=problem_file)
+    print("]", file=problem_file)
+    print(f"With best guessing_rate: {best_guessing_index} / {M+M}",file=problem_file)
     print("AUTOMATON:",file=problem_file)
     cf.print_solution(n,DELTAn1,DELTA0,DELTA1,ALPHA,problem_file)
-    print( "------------------------------------------------------------------------", file=problem_file)
-    print( "Total time spent solving the problem:\t",TIME_SPENT,  file=problem_file)
-    print( "Solver used:                         \t",solver_to_use,"w/o PBlib", file=problem_file)
+    if cut:
+        print(f"Obtained quality of the automaton:  \t{positives_guessed} / {total_guesses} = {round(100*positives_guessed/total_guesses, 2)}%", file=problem_file)
+    print("------------------------------------------------------------------------", file=problem_file)
+    print("Total time spent solving the problem:\t",TIME_SPENT,  file=problem_file)
+    print("Solver used:                         \t",solver_to_use,"w/o PBlib", file=problem_file)
 
     # as a graph
     cf.plot_automaton(n,DELTAn1,DELTA0,DELTA1,ALPHA,automaton_file)
