@@ -192,7 +192,7 @@ for d in range(n_diags):
             print(f"Definition of correctly_rejected({k}):",clauses, file=clauses_file)
             problem.extend( clauses )
 
-        """# ADD REDUNDANT CLAUSES TO HELP THE SOLVER PROPAGATE
+        # ADD REDUNDANT CLAUSES TO HELP THE SOLVER PROPAGATE
 
         for k in range(M_A):
             for l in range(k+1,M_A):
@@ -213,7 +213,7 @@ for d in range(n_diags):
                     for i in range(n):
                         clauses = [ [ -R_guessing_state(k,i) , R_guessing_state(l,i) ] , [ R_guessing_state(k,i) , -R_guessing_state(l,i) ] ]
                         print(f"Redundant equivalence between R_guessing_states({k},{i}) and R_guessing_states({l},{i}):",clauses, file=clauses_file)
-                        problem.extend( clauses )"""
+                        problem.extend( clauses )
 
         # TRY TO SOLVE THE PROBLEM AND PRINT THE RESULTING GUESSING INDEX
 
@@ -290,7 +290,7 @@ TIME_SPENT = END - START
 solution_file = open(r"./out/" + date_instance + ".sol","w")
 (DELTAn1, DELTA0, DELTA1, FINAL) = cf.read_solution(BEST_SOL,n,I_final,I_tree)
 
-pm.solution_plotter(stock_values, best_A, best_R, n, DELTAn1, DELTA0, DELTA1, FINAL, best_u, best_v, optimal_thresholds, best_guessing_rate, M, solver_to_use, TIME_SPENT, problem_file, solution_file, automaton_file=instance)
+pm.solution_plotter(stock_values, best_A, best_R, length, n, DELTAn1, DELTA0, DELTA1, FINAL, best_u, best_v, optimal_thresholds, best_guessing_rate, M, solver_to_use, TIME_SPENT, problem_file, solution_file, automaton_file=instance, cut=True)
 
 
 # CLOSE ALL FILES

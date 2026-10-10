@@ -296,7 +296,7 @@ TIME_SPENT = END - START
 solution_file = open(r"./out/" + date_instance + ".sol","w")
 (DELTAn1, DELTA0, DELTA1, FINAL) = cf.read_solution(BEST_SOL,n,I_final,I_tree)
 
-pm.solution_plotter(stock_values, best_A, best_R, n, DELTAn1, DELTA0, DELTA1, FINAL, best_u, best_v, optimal_thresholds, best_guessing_rate, M, solver_to_use, TIME_SPENT, problem_file, solution_file, automaton_file=instance)
+pm.solution_plotter(stock_values, best_A, best_R, length, n, DELTAn1, DELTA0, DELTA1, FINAL, best_u, best_v, optimal_thresholds, best_guessing_rate, M, solver_to_use, TIME_SPENT, problem_file, solution_file, automaton_file=instance)
 
 
 # CLOSE ALL FILES

@@ -45,13 +45,14 @@ def settings_reader():
 
     # ESTABLISH DEFAULT VALUES OTHERWISE
     else:
-        n = 5
+        n = 8
         length = 7
         M_type = "f"
         M = 20
         are_u_v_fixed = True
         p_diags = None
-        u = v = 0.02
+        u = 0.01
+        v = 0.015
         solver_to_use = "Cadical300"
 
     # IF u,v ARE NOT FIXED, SET THEIR VALUES TO None AND LOOK FOR THE % OF VALUES THAT SHOULD BE TRAVERSED.
@@ -129,7 +130,7 @@ def input_reader():
         n_diags = len(U) + len(V) - 1
 
     # GIVE NAME TO THE REG FILE
-    date_instance = instance + " " + solver_to_use + " " + str(datetime.now(timezone.utc))[:19]
+    date_instance = instance + "_" + solver_to_use + "_" + str(datetime.now(timezone.utc))[:19]
 
     return instance, date_instance, stock_values, n, length, words_file, M, U, V, MGL, LGL, solver_to_use, n_diags
 
@@ -180,15 +181,15 @@ def cut_input_reader():
         n_diags = len(U) + len(V) - 1
 
     # GIVE NAME TO THE REG FILE
-    date_instance = instance + " " + solver_to_use + " " + str(datetime.now(timezone.utc))[:19]
+    date_instance = instance + "_" + solver_to_use + "_" + str(datetime.now(timezone.utc))[:19]
 
     return instance, date_instance, stock_values, n, length, words_file, M, U, V, MGL, LGL, solver_to_use, n_diags
 
 
-def solution_plotter(stock_values: list, A: list, R: list, n: int, DELTAn1: list, DELTA0: list, DELTA1: list, ALPHA: list, best_u: float, best_v: float, optimal_thresholds: list, best_guessing_index: int, M: int, solver_to_use: str, TIME_SPENT: float, problem_file, solution_file, automaton_file: str ="automaton_graph", cut: bool=False):
+def solution_plotter(stock_values: list, A: list, R: list, length: int, n: int, DELTAn1: list, DELTA0: list, DELTA1: list, ALPHA: list, best_u: float, best_v: float, optimal_thresholds: list, best_guessing_index: int, M: int, solver_to_use: str, TIME_SPENT: float, problem_file, solution_file, automaton_file: str ="automaton_graph", cut: bool=False):
 
     if cut:
-        (positives_guessed, negatives_tanked) = aq.run_atomata_on_stock(DELTAn1, DELTA0, DELTA1, ALPHA, stock_values, best_u, best_v)
+        (positives_guessed, negatives_tanked) = aq.run_atomata_on_stock(DELTAn1, DELTA0, DELTA1, ALPHA, stock_values, best_u, best_v, length)
         total_guesses = positives_guessed + negatives_tanked
 
     # to solution_file

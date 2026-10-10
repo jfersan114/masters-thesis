@@ -23,6 +23,7 @@ DONE = []
 TO_DO = "all"
 pairs = []
 u_v_list = []
+plot = "n"
 
 if not os.path.exists("./register/results.csv"):
     f = open(r"./register/results.csv", "w")
@@ -90,6 +91,9 @@ for filename in os.listdir(INSTANCES):
                 match = re.search(r'=\s*([\d.]+%)', line)
                 if match:
                     quality_value = match.group(1)
+                else:
+                    quality_value = "None"
+                
 
         results.append( [ instance, ratio_value, time_value, quality_value, pairs] )
 
@@ -110,7 +114,10 @@ with open("./register/results.csv", "a") as f:
 
 
 # Plot all optimal (u,v) pairs
-if u_v_list:
+while plot != "y" and plot != "n":
+    plot = "y" #input("\nPlot (u,v) pairs obtained? (y/n): ")
+
+if u_v_list and plot == "y":
     x, y = zip(*u_v_list)
 
     # Compute adaptive limits
