@@ -1,0 +1,92 @@
+------------------------------------------------------------------------
+Problem ( u= 0.01 , v= 0.015 ):
+
+A:
+[0, 0, 1, 1, 1]
+[1, 0, 0, 0, 1]
+[0, 0, 0, 0, 0]
+[-1, 1, -1, -1, -1]
+[-1, 1, 1, 1, 0]
+[-1, -1, -1, 0, -1]
+[1, 0, -1, 1, 0]
+[1, 0, 0, 1, 0]
+[1, 1, 0, 0, -1]
+[0, 1, -1, -1, 1]
+[0, -1, -1, 0, -1]
+[-1, 0, 1, 1, 1]
+[-1, 0, 0, -1, 0]
+[1, 1, -1, 1, 1]
+[1, 1, 1, -1, 0]
+[1, 0, 0, 1, 0]
+[0, 1, -1, 1, 1]
+[1, -1, -1, 1, 1]
+[-1, 1, 1, -1, 0]
+[0, 0, -1, -1, 1]
+
+R:
+[-1, 1, 0, 0, 0]
+[1, 0, 0, -1, 0]
+[1, 0, -1, -1, 1]
+[-1, 0, -1, 0, 1]
+[-1, -1, 1, 0, 0]
+[1, -1, 0, 1, 0]
+[1, -1, 1, -1, 1]
+[1, 1, 0, -1, 1]
+[1, 0, 0, -1, -1]
+[-1, 1, 0, 0, -1]
+[-1, 0, -1, -1, 1]
+[-1, 1, 1, -1, -1]
+[1, 1, 1, 1, -1]
+[-1, 0, 0, 0, -1]
+[-1, 0, -1, 1, 1]
+[-1, 0, -1, 0, -1]
+[0, 0, 0, -1, 0]
+[-1, 0, -1, 1, 0]
+[-1, -1, 1, -1, -1]
+[-1, 0, -1, -1, 0]
+
+	Searching for solutions with guessing_rate >= 20.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 21.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 27.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 28.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 29.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 32.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 34.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 36.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 37.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 38.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 39.
+		Result:	 UNSAT
+Max guessing_rate for (u,v)= (0.01,0.015):           	38 / 40
+Time needed to solve the problem with (u,v)= (0.01,0.015):	5.321223497390747
+Best solution found for the problem with (u,v)= (0.01,0.015):
+2 4 3 0
+3 0 1 1
+0 0 0 1
+4 2 4 0
+4 1 1 0
+------------------------------------------------------------------------
+BEST SOLUTION FOUND:
+(u,v) = (0.01,0.015)
+Optimal (u,v) list: 	[ (0.01,0.015) ]
+With best guessing_rate: 38 / 40
+AUTOMATON:
+2 4 3 0
+3 0 1 1
+0 0 0 1
+4 2 4 0
+4 1 1 0
+Obtained quality of the automaton:  	79 / 155 = 50.97%
+------------------------------------------------------------------------
+Total time spent solving the problem:	 5.32143235206604
+Solver used:                         	 Cadical300 w/o PBlib

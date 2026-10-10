@@ -1,0 +1,100 @@
+------------------------------------------------------------------------
+Problem ( u= 0.01 , v= 0.015 ):
+
+A:
+[0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 1, -1, 1, -1]
+[-1, 0, 0, -1, 0]
+[-1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, -1]
+[0, 1, 0, 1, 0]
+[0, -1, 1, 0, 0]
+[0, 1, 0, 0, 0]
+[0, 1, 0, 0, -1]
+[1, -1, 0, 0, 0]
+[-1, 0, 1, 0, 1]
+[0, -1, 0, -1, 0]
+[0, 0, -1, 1, 0]
+[0, 0, 0, 0, 0]
+[-1, 1, -1, 0, -1]
+[-1, 0, 0, 0, -1]
+[0, 0, 0, 0, -1]
+
+R:
+[0, 0, -1, 1, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[1, 1, -1, 0, 1]
+[0, 0, 0, 0, 0]
+[1, 0, 1, 0, 1]
+[1, 0, 0, 0, 0]
+[-1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[-1, 0, 0, 0, 1]
+[-1, 1, 0, -1, 0]
+[0, 0, 0, 0, 0]
+[1, -1, 0, -1, 1]
+[0, 0, -1, 1, 0]
+[1, 0, 0, 0, 1]
+[-1, 0, -1, 0, 1]
+
+	Searching for solutions with guessing_rate >= 20.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 21.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 22.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 25.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 27.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 28.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 31.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 32.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 33.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 34.
+		Result:	 UNSAT
+Max guessing_rate for (u,v)= (0.01,0.015):           	33 / 40
+Time needed to solve the problem with (u,v)= (0.01,0.015):	0.17125630378723145
+Best solution found for the problem with (u,v)= (0.01,0.015):
+8 5 4 0
+6 7 9 0
+5 7 3 1
+2 0 8 0
+9 5 1 0
+5 2 3 1
+0 3 7 0
+0 3 8 0
+5 1 8 0
+4 9 9 1
+------------------------------------------------------------------------
+BEST SOLUTION FOUND:
+(u,v) = (0.01,0.015)
+Optimal (u,v) list: 	[ (0.01,0.015) ]
+With best guessing_rate: 33 / 40
+AUTOMATON:
+8 5 4 0
+6 7 9 0
+5 7 3 1
+2 0 8 0
+9 5 1 0
+5 2 3 1
+0 3 7 0
+0 3 8 0
+5 1 8 0
+4 9 9 1
+Obtained quality of the automaton:  	7 / 48 = 14.58%
+------------------------------------------------------------------------
+Total time spent solving the problem:	 0.17143845558166504
+Solver used:                         	 Cadical300 w/o PBlib

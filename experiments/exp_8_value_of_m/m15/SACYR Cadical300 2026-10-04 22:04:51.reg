@@ -1,0 +1,88 @@
+------------------------------------------------------------------------
+Problem ( u= 0.01 , v= 0.015 ):
+
+A:
+[-1, -1, 1, -1, 1]
+[0, 1, 1, 0, 1]
+[-1, -1, -1, 0, 0]
+[0, -1, -1, -1, 0]
+[1, -1, 0, -1, 1]
+[-1, 1, -1, -1, 1]
+[-1, 1, 0, -1, 1]
+[-1, -1, 0, 1, 1]
+[0, 1, 1, 0, 1]
+[-1, -1, -1, -1, 0]
+[1, -1, -1, -1, 1]
+[0, 1, -1, -1, -1]
+[-1, -1, -1, 1, -1]
+[0, 1, -1, 0, 1]
+[1, 0, 0, 1, 1]
+
+R:
+[1, -1, -1, 0, 1]
+[-1, 1, -1, 1, -1]
+[-1, 0, 1, 1, 1]
+[0, -1, 1, -1, -1]
+[-1, 1, 0, -1, -1]
+[0, -1, 1, -1, 1]
+[-1, 1, 1, 0, -1]
+[1, 1, -1, -1, 1]
+[-1, -1, -1, -1, -1]
+[-1, 1, 1, 0, 0]
+[0, -1, -1, -1, 0]
+[-1, 1, -1, -1, 0]
+[-1, 1, 1, -1, -1]
+[-1, 0, -1, 1, 1]
+[-1, -1, -1, -1, 0]
+
+	Searching for solutions with guessing_rate >= 15.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 16.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 17.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 19.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 22.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 23.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 25.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 26.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 27.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 28.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 29.
+		Result:	 UNSAT
+Max guessing_rate for (u,v)= (0.01,0.015):           	28 / 30
+Time needed to solve the problem with (u,v)= (0.01,0.015):	0.1928849220275879
+Best solution found for the problem with (u,v)= (0.01,0.015):
+3 6 4 0
+7 3 6 1
+4 4 6 1
+5 4 1 0
+3 2 6 0
+3 2 1 1
+2 7 1 0
+3 6 2 1
+------------------------------------------------------------------------
+BEST SOLUTION FOUND:
+(u,v) = (0.01,0.015)
+Optimal (u,v) list: 	[ (0.01,0.015) ]
+With best guessing_rate: 28 / 30
+AUTOMATON:
+3 6 4 0
+7 3 6 1
+4 4 6 1
+5 4 1 0
+3 2 6 0
+3 2 1 1
+2 7 1 0
+3 6 2 1
+Obtained quality of the automaton:  	82 / 140 = 58.57%
+------------------------------------------------------------------------
+Total time spent solving the problem:	 0.19304656982421875
+Solver used:                         	 Cadical300 w/o PBlib

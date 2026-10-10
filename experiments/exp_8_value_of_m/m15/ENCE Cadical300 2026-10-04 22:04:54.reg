@@ -1,0 +1,82 @@
+------------------------------------------------------------------------
+Problem ( u= 0.01 , v= 0.015 ):
+
+A:
+[1, 1, -1, 0, 0]
+[-1, -1, -1, -1, 0]
+[0, 0, 0, 0, 1]
+[1, 0, -1, 1, 1]
+[0, -1, 1, 0, 1]
+[-1, -1, -1, -1, -1]
+[1, -1, -1, -1, -1]
+[0, 1, 1, 0, 1]
+[0, 1, 0, -1, 0]
+[0, 0, 0, 0, 0]
+[-1, -1, -1, -1, -1]
+[1, 0, -1, -1, 1]
+[1, 0, 0, -1, 1]
+[-1, -1, -1, -1, 1]
+[0, 1, 0, -1, 1]
+
+R:
+[0, 1, 0, 0, 1]
+[1, 0, -1, -1, 0]
+[-1, 1, 1, 1, -1]
+[-1, 1, 0, 1, 1]
+[0, 0, -1, 0, 0]
+[-1, -1, -1, 0, 0]
+[-1, 0, -1, 1, -1]
+[-1, 0, -1, 0, -1]
+[0, 0, 1, 0, 1]
+[-1, 0, -1, -1, -1]
+[-1, 0, 1, -1, -1]
+[-1, -1, -1, -1, -1]
+[1, 0, 0, 0, 0]
+[0, 0, 0, 0, -1]
+[0, -1, 0, 0, -1]
+
+	Searching for solutions with guessing_rate >= 15.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 16.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 20.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 26.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 27.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 28.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 29.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 30.
+		Result:	 UNSAT
+Max guessing_rate for (u,v)= (0.01,0.015):           	29 / 30
+Time needed to solve the problem with (u,v)= (0.01,0.015):	0.17972874641418457
+Best solution found for the problem with (u,v)= (0.01,0.015):
+2 7 1 0
+7 3 0 1
+5 0 0 0
+2 4 0 1
+6 2 0 0
+4 0 1 1
+5 7 1 1
+4 7 3 1
+------------------------------------------------------------------------
+BEST SOLUTION FOUND:
+(u,v) = (0.01,0.015)
+Optimal (u,v) list: 	[ (0.01,0.015) ]
+With best guessing_rate: 29 / 30
+AUTOMATON:
+2 7 1 0
+7 3 0 1
+5 0 0 0
+2 4 0 1
+6 2 0 0
+4 0 1 1
+5 7 1 1
+4 7 3 1
+Obtained quality of the automaton:  	109 / 225 = 48.44%
+------------------------------------------------------------------------
+Total time spent solving the problem:	 0.17989206314086914
+Solver used:                         	 Cadical300 w/o PBlib

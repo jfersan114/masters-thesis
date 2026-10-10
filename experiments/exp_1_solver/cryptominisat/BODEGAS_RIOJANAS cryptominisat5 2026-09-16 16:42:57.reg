@@ -1,0 +1,85 @@
+------------------------------------------------------------------------
+Problem ( u= 0.015 , v= 0.015 ):
+
+A:
+[-1, 0, 0, -1, -1]
+[1, 0, 0, -1, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0]
+[-1, 0, 0, -1, 0]
+[-1, 0, 0, 0, 0]
+[-1, 0, 0, 0, 1]
+[0, 0, 0, 0, -1]
+[-1, 0, 0, 0, -1]
+[0, -1, 1, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 1, 0, 0, -1]
+[1, -1, 0, 0, 0]
+[-1, 0, 1, 0, 1]
+[0, -1, 0, -1, 0]
+[0, 0, -1, 1, 0]
+[0, 0, 0, 0, 0]
+[-1, 1, -1, 0, -1]
+[-1, -1, 0, 0, 0]
+[0, 0, 0, 0, -1]
+
+R:
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[1, 1, -1, 0, 1]
+[0, 0, 1, 0, 1]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[-1, 0, 0, 0, 1]
+[0, 0, 0, 0, 0]
+[-1, 1, 0, 0, 1]
+[1, 0, 0, 0, 0]
+[-1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, -1]
+[-1, 1, 0, -1, 0]
+[0, 0, 0, 0, 0]
+[1, -1, 0, -1, 1]
+[0, 0, -1, 1, 0]
+[0, 0, 0, 0, 1]
+[-1, 0, -1, 0, 1]
+
+	Searching for solutions with guessing_rate >= 20.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 21.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 23.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 25.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 27.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 31.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 32.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 34.
+		Result:	 UNSAT
+Max guessing_rate for (u,v)= (0.015,0.015):           	33 / 40
+Time needed to solve the problem with (u,v)= (0.015,0.015):	0.1594545841217041
+Best solution found for the problem with (u,v)= (0.015,0.015):
+4 2 4 0
+1 1 4 1
+4 3 1 0
+1 2 4 1
+1 4 0 0
+------------------------------------------------------------------------
+BEST SOLUTION FOUND:
+(u,v) = (0.015,0.015)
+(i,j) = (0,0)
+With best guessing rate: 33 / 40
+AUTOMATON:
+4 2 4 0
+1 1 4 1
+4 3 1 0
+1 2 4 1
+1 4 0 0
+------------------------------------------------------------------------
+Total time spent solving the problem:	 0.15963459014892578
+Solver used:                         	 cryptominisat5 w/o PBlib

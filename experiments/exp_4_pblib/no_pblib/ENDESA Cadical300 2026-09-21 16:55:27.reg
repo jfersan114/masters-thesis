@@ -1,0 +1,93 @@
+------------------------------------------------------------------------
+Problem ( u= 0.015 , v= 0.015 ):
+
+A:
+[0, -1, 0, 0, -1]
+[0, -1, 0, 1, 0]
+[1, 1, -1, 1, 1]
+[0, 0, 0, 0, -1]
+[-1, 1, -1, -1, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 1, 1, 0]
+[0, -1, 0, 1, -1]
+[0, 0, 0, 0, 0]
+[-1, 1, 0, 0, 0]
+[0, 1, 1, 1, -1]
+[0, 0, 1, 0, 1]
+[1, 1, -1, 1, -1]
+[0, 0, 0, -1, -1]
+[0, 1, 0, 0, 1]
+[1, 0, 0, 0, 1]
+[0, 0, 0, 1, 0]
+[0, 1, 0, 0, 0]
+[-1, -1, -1, -1, -1]
+[1, 0, 0, 0, -1]
+
+R:
+[-1, 0, 1, 0, -1]
+[0, 0, 0, -1, -1]
+[0, 0, 1, 1, 1]
+[0, 0, 0, -1, 1]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 1, -1]
+[1, 0, 0, -1, -1]
+[0, 0, -1, -1, -1]
+[0, 0, 0, 1, -1]
+[-1, 1, -1, 0, 0]
+[0, -1, 0, 1, 0]
+[1, 0, 0, 0, -1]
+[0, 1, 1, 0, -1]
+[-1, -1, -1, -1, 0]
+[0, 1, 0, 0, 0]
+[0, -1, -1, -1, -1]
+[0, 1, -1, 1, 0]
+[0, 0, -1, 0, 0]
+[-1, 0, 1, 0, 0]
+[0, -1, -1, -1, -1]
+
+	Searching for solutions with guessing_rate >= 20.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 21.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 22.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 25.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 28.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 29.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 30.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 31.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 32.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 33.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 34.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 35.
+		Result:	 UNSAT
+Max guessing_rate for (u,v)= (0.015,0.015):           	34 / 40
+Time needed to solve the problem with (u,v)= (0.015,0.015):	0.8198423385620117
+Best solution found for the problem with (u,v)= (0.015,0.015):
+0 1 0 1
+1 4 0 0
+1 0 4 1
+2 3 2 1
+2 3 3 0
+------------------------------------------------------------------------
+BEST SOLUTION FOUND:
+(u,v) = (0.015,0.015)
+(i,j) = (0,0)
+With best guessing rate: 34 / 40
+AUTOMATON:
+0 1 0 1
+1 4 0 0
+1 0 4 1
+2 3 2 1
+2 3 3 0
+------------------------------------------------------------------------
+Total time spent solving the problem:	 0.8200545310974121
+Solver used:                         	 Cadical300 w/o PBlib

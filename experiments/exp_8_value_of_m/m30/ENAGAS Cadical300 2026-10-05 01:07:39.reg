@@ -1,0 +1,130 @@
+------------------------------------------------------------------------
+Problem ( u= 0.01 , v= 0.015 ):
+
+A:
+[0, 0, 1, 0, 1]
+[1, 0, 0, 1, 0]
+[-1, 0, 0, -1, 0]
+[0, -1, -1, -1, 1]
+[0, 0, 0, 0, 0]
+[1, 0, -1, 0, 1]
+[1, -1, -1, 0, 0]
+[-1, 0, 1, 1, 1]
+[0, 0, 1, 1, -1]
+[0, 0, 1, 0, 0]
+[-1, 1, 1, -1, -1]
+[0, 0, 1, 0, 0]
+[-1, -1, 0, -1, 1]
+[1, 0, -1, 0, 1]
+[0, 1, 0, 1, 0]
+[-1, -1, 1, 1, 1]
+[0, 0, 0, 0, 0]
+[0, 0, 0, -1, -1]
+[-1, -1, -1, 1, -1]
+[1, 0, 0, 1, 0]
+[-1, -1, -1, -1, -1]
+[0, 0, 0, 0, 1]
+[-1, -1, 1, -1, 1]
+[0, 1, -1, -1, 1]
+[0, 0, 0, 0, 0]
+[-1, 0, -1, -1, -1]
+[0, 0, -1, -1, 1]
+[-1, 1, 0, 0, 1]
+[1, 0, 1, -1, -1]
+[0, -1, -1, -1, -1]
+
+R:
+[1, 1, -1, 0, 0]
+[1, 1, -1, 0, 0]
+[-1, -1, 0, 0, 0]
+[0, -1, 0, 0, 1]
+[0, 0, 0, -1, -1]
+[1, 1, -1, 1, -1]
+[0, 0, 0, 1, -1]
+[-1, -1, 0, -1, -1]
+[0, 1, 0, -1, -1]
+[0, 0, 1, 1, 1]
+[1, 1, 0, 0, 0]
+[0, 0, 0, -1, 1]
+[0, 0, -1, -1, -1]
+[-1, -1, -1, -1, 1]
+[0, 0, -1, -1, -1]
+[-1, -1, -1, 1, 1]
+[1, 1, 0, 0, -1]
+[-1, -1, -1, -1, -1]
+[-1, -1, -1, 0, -1]
+[1, -1, 0, 0, 1]
+[0, 1, 0, -1, -1]
+[-1, 0, 1, 0, -1]
+[0, 0, 1, -1, -1]
+[-1, 0, 0, 1, 1]
+[0, 1, 0, 0, 0]
+[1, 1, 1, 0, 1]
+[0, 1, -1, -1, -1]
+[0, 0, 0, 0, -1]
+[0, -1, 1, 1, 1]
+[0, 1, 0, 0, 0]
+
+	Searching for solutions with guessing_rate >= 30.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 31.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 35.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 38.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 43.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 47.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 48.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 49.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 50.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 52.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 53.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 54.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 55.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 56.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 57.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 58.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 59.
+		Result:	 UNSAT
+Max guessing_rate for (u,v)= (0.01,0.015):           	58 / 60
+Time needed to solve the problem with (u,v)= (0.01,0.015):	1.6954550743103027
+Best solution found for the problem with (u,v)= (0.01,0.015):
+0 6 7 0
+5 3 0 1
+1 5 2 1
+1 5 4 0
+7 7 1 0
+6 1 2 1
+4 1 2 0
+2 0 4 0
+------------------------------------------------------------------------
+BEST SOLUTION FOUND:
+(u,v) = (0.01,0.015)
+Optimal (u,v) list: 	[ (0.01,0.015) ]
+With best guessing_rate: 58 / 60
+AUTOMATON:
+0 6 7 0
+5 3 0 1
+1 5 2 1
+1 5 4 0
+7 7 1 0
+6 1 2 1
+4 1 2 0
+2 0 4 0
+Obtained quality of the automaton:  	112 / 190 = 58.95%
+------------------------------------------------------------------------
+Total time spent solving the problem:	 1.6956753730773926
+Solver used:                         	 Cadical300 w/o PBlib
