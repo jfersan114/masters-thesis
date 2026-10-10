@@ -1,4 +1,0 @@
-cómo hacer la evaluación del autómata generado?
- - deberían u y v afectar?
- - en qué palabra trabaja el autómata?
- - cómo se determina la calidad?

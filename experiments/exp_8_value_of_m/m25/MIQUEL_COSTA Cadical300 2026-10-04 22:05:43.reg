@@ -1,0 +1,106 @@
+------------------------------------------------------------------------
+Problem ( u= 0.01 , v= 0.015 ):
+
+A:
+[-1, -1, 1, 1, 0]
+[1, 0, 1, -1, 0]
+[-1, 0, -1, -1, 0]
+[1, 0, 0, -1, 0]
+[1, 0, 0, 1, 0]
+[1, 1, 1, 0, 0]
+[-1, 1, -1, 1, -1]
+[0, -1, 1, -1, -1]
+[0, -1, 1, 0, 1]
+[0, 1, -1, 0, -1]
+[-1, -1, 0, 0, -1]
+[0, 0, 0, 0, 0]
+[1, 0, -1, 1, -1]
+[-1, 1, -1, -1, -1]
+[1, -1, 1, -1, 1]
+[-1, -1, -1, 0, 0]
+[-1, -1, 1, 0, -1]
+[-1, -1, 0, -1, -1]
+[1, 1, -1, 1, -1]
+[0, 1, 0, 0, 0]
+[1, 1, -1, 0, -1]
+[0, -1, -1, -1, -1]
+[1, -1, 0, -1, 1]
+[1, 0, 0, 0, 1]
+[0, -1, 0, 0, 0]
+
+R:
+[1, -1, 1, -1, 1]
+[0, -1, 0, 1, 0]
+[0, 0, 0, 0, 0]
+[1, -1, 1, -1, 1]
+[-1, 0, 0, 0, 1]
+[1, 1, -1, 1, -1]
+[0, 0, -1, 0, -1]
+[1, -1, -1, 1, 1]
+[-1, 0, -1, -1, 1]
+[-1, 0, 1, -1, 1]
+[0, 0, -1, 1, -1]
+[-1, -1, -1, -1, 1]
+[1, 0, -1, 1, -1]
+[0, 0, 0, -1, -1]
+[1, -1, -1, 1, 0]
+[-1, 1, 0, 0, 0]
+[1, 1, 0, 1, 0]
+[1, 1, -1, 0, 0]
+[1, -1, 1, 1, 0]
+[0, 0, 0, 1, 0]
+[0, 1, 1, -1, 1]
+[1, 0, 0, 0, 0]
+[-1, 0, 0, -1, -1]
+[-1, -1, 0, 0, 1]
+[1, 0, 0, 0, 0]
+
+	Searching for solutions with guessing_rate >= 25.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 26.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 38.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 39.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 40.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 42.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 43.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 44.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 45.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 47.
+		Result:	 UNSAT
+Max guessing_rate for (u,v)= (0.01,0.015):           	46 / 50
+Time needed to solve the problem with (u,v)= (0.01,0.015):	0.5090458393096924
+Best solution found for the problem with (u,v)= (0.01,0.015):
+5 0 4 1
+0 3 7 1
+1 1 2 1
+2 4 3 1
+1 7 4 0
+6 0 6 0
+4 3 6 0
+7 1 4 0
+------------------------------------------------------------------------
+BEST SOLUTION FOUND:
+(u,v) = (0.01,0.015)
+Optimal (u,v) list: 	[ (0.01,0.015) ]
+With best guessing_rate: 46 / 50
+AUTOMATON:
+5 0 4 1
+0 3 7 1
+1 1 2 1
+2 4 3 1
+1 7 4 0
+6 0 6 0
+4 3 6 0
+7 1 4 0
+Obtained quality of the automaton:  	65 / 155 = 41.94%
+------------------------------------------------------------------------
+Total time spent solving the problem:	 0.509263277053833
+Solver used:                         	 Cadical300 w/o PBlib

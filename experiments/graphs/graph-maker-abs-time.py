@@ -164,3 +164,12 @@ plt.close()
 
 print()
 print(f"Saved plot to: {output}")
+
+# Cadical300 cryptominisat5 Glucose421 Kissat404 Minisat22 -> solver
+# no_redund redund -> redundancies
+# pairwise sequential sortnetwrk cardnetwrk bitwise ladder totalizer mtotalizer kmtotalizer -> card_encodings
+# no_pblib pblib -> pblib
+# optimal_uv_1 optimal_uv_2 optimal_uv_3 optimal_uv_4 optimal_uv_5 -> optimal_uv
+# final_exp -> qual
+# n4 n5 n6 n7 n8 n9 n10 -> qual_n
+# m10 m15 m20 m25 m30 m35 m40 -> qual_m

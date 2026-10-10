@@ -10,6 +10,21 @@ from datetime import datetime
 
 GRAPH_DIR = Path("./experiments/graphs")
 
+# Colors assigned to input files in order
+LINE_COLORS = [
+    "red",
+    "orange",
+    "gold",
+    "lime",
+    "green",
+    "lightblue",
+    "blue",
+    "purple",
+    "pink",
+    "grey",
+    "black",
+]
+
 
 # ----------------------------------------------------------------------
 # Ask for the files
@@ -136,7 +151,7 @@ for name, file_data in data.items():
 
 plt.figure(figsize=(12, 6))
 
-for name, file_data in normalized_data.items():
+for index, (name, file_data) in enumerate(normalized_data.items()):
 
     x = []
     y = []
@@ -149,10 +164,19 @@ for name, file_data in normalized_data.items():
             x.append(i)
             y.append(value)
 
+    # Assign colors according to the order in which the files
+    # were provided and parsed.
+    if index < len(LINE_COLORS):
+        color = LINE_COLORS[index]
+    else:
+        # Fallback if more files are provided than colors.
+        color = None
+
     plt.plot(
         x,
         y,
         marker="o",
+        color=color,
         label=name
     )
 
@@ -202,3 +226,13 @@ plt.close()
 
 print()
 print(f"Saved plot to: {output}")
+
+
+# Cadical300 cryptominisat5 Glucose421 Kissat404 Minisat22 -> solver
+# no_redund redund -> redundancies
+# pairwise sequential sortnetwrk cardnetwrk bitwise ladder totalizer mtotalizer kmtotalizer -> card_encodings
+# no_pblib pblib -> pblib
+# optimal_uv_1 optimal_uv_2 optimal_uv_3 optimal_uv_4 optimal_uv_5 -> optimal_uv
+# final_res -> final_res final_res_2
+# n4 n5 n6 n7 n8 n9 n10 -> n_qual n_qual_2 n_time n_time_2
+# m10 m15 m20 m25 m30 m35 m40 -> m_qual m_qual_2 m_time m_time_2

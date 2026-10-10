@@ -11,6 +11,21 @@ import numpy as np
 GRAPH_DIR = Path("./experiments/graphs")
 GRAPH_DIR.mkdir(parents=True, exist_ok=True)
 
+# Colors assigned to input files in order
+LINE_COLORS = [
+    "red",
+    "orange",
+    "gold",
+    "lime",
+    "green",
+    "lightblue",
+    "blue",
+    "purple",
+    "pink",
+    "grey",
+    "black",
+]
+
 
 # ----------------------------------------------------------------------
 # Ask for the files
@@ -93,18 +108,22 @@ plt.figure(
 
 
 # Create lines
-for filename in filenames:
+for i, filename in enumerate(filenames):
 
     values = [
         data[filename].get(instance, np.nan)
         for instance in instances
     ]
 
+    # Use the corresponding rainbow color
+    color = LINE_COLORS[i]
+
     plt.plot(
         x,
         values,
         marker="o",
         linewidth=1.5,
+        color=color,
         label=Path(filename).stem,
         zorder=2
     )
@@ -180,3 +199,12 @@ plt.savefig(
 plt.close()
 
 print(f"Graph saved to: {output_path}")
+
+# Cadical300 cryptominisat5 Glucose421 Kissat404 Minisat22 -> solver
+# no_redund redund -> redundancies
+# pairwise sequential sortnetwrk cardnetwrk bitwise ladder totalizer mtotalizer kmtotalizer -> card_encodings
+# no_pblib pblib -> pblib
+# optimal_uv_1 optimal_uv_2 optimal_uv_3 optimal_uv_4 optimal_uv_5 -> optimal_uv
+# final_res -> final_res final_res_2
+# n4 n5 n6 n7 n8 n9 n10 -> n_qual n_qual_2 n_time n_time_2
+# m10 m15 m20 m25 m30 m35 m40 -> m_qual m_qual_2 m_time m_time_2

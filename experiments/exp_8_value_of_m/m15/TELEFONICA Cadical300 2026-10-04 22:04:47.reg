@@ -1,0 +1,88 @@
+------------------------------------------------------------------------
+Problem ( u= 0.01 , v= 0.015 ):
+
+A:
+[0, 0, 0, -1, 1]
+[-1, 1, 0, 0, -1]
+[0, 0, -1, 1, 0]
+[0, 1, 0, 0, 0]
+[1, 0, 0, 0, -1]
+[-1, 1, -1, 1, 0]
+[1, 0, 1, -1, -1]
+[-1, 1, -1, -1, -1]
+[0, 1, -1, 0, -1]
+[-1, -1, -1, -1, -1]
+[1, 0, 0, 0, -1]
+[0, -1, -1, -1, -1]
+[-1, 0, -1, 1, -1]
+[1, 1, 0, 0, 1]
+[0, -1, 1, -1, 0]
+
+R:
+[0, 0, 0, -1, 0]
+[0, -1, 0, -1, 0]
+[-1, -1, -1, 0, -1]
+[0, -1, 0, 0, 0]
+[1, 0, 1, -1, 1]
+[-1, -1, 1, 1, -1]
+[1, 1, 0, 0, 0]
+[1, -1, 1, -1, -1]
+[-1, -1, -1, -1, 0]
+[0, 1, 1, -1, 0]
+[1, 1, 0, 0, 0]
+[0, 0, 1, -1, -1]
+[0, 1, 1, 0, 1]
+[1, -1, 0, 0, 0]
+[1, -1, 1, 0, 1]
+
+	Searching for solutions with guessing_rate >= 15.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 16.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 17.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 21.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 23.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 24.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 25.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 26.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 27.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 28.
+		Result:	 SAT
+	Searching for solutions with guessing_rate >= 30.
+		Result:	 SAT
+Max guessing_rate for (u,v)= (0.01,0.015):           	30 / 30
+Time needed to solve the problem with (u,v)= (0.01,0.015):	0.186720609664917
+Best solution found for the problem with (u,v)= (0.01,0.015):
+2 7 3 1
+2 4 6 0
+4 2 5 0
+6 2 4 1
+1 5 3 1
+5 0 7 1
+6 7 4 1
+6 6 1 0
+------------------------------------------------------------------------
+BEST SOLUTION FOUND:
+(u,v) = (0.01,0.015)
+Optimal (u,v) list: 	[ (0.01,0.015) ]
+With best guessing_rate: 30 / 30
+AUTOMATON:
+2 7 3 1
+2 4 6 0
+4 2 5 0
+6 2 4 1
+1 5 3 1
+5 0 7 1
+6 7 4 1
+6 6 1 0
+Obtained quality of the automaton:  	92 / 159 = 57.86%
+------------------------------------------------------------------------
+Total time spent solving the problem:	 0.18689560890197754
+Solver used:                         	 Cadical300 w/o PBlib
